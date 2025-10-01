@@ -1,10 +1,14 @@
 
 import React from 'react';
+import Hair1 from './avatar/hair/Hair1';
+import Hair2 from './avatar/hair/Hair2';
+import Hair3 from './avatar/hair/Hair3';
 
 interface AvatarCustomizerProps {
   onHairChange: (hair: string) => void;
   onEyesChange: (eyes: string) => void;
   onMouthChange: (mouth: string) => void;
+  // Add skin color change later
 }
 
 const AvatarCustomizer: React.FC<AvatarCustomizerProps> = ({
@@ -12,23 +16,64 @@ const AvatarCustomizer: React.FC<AvatarCustomizerProps> = ({
   onEyesChange,
   onMouthChange,
 }) => {
+  const hairOptions = [
+    { id: 'hair-1', component: <Hair1 /> },
+    { id: 'hair-2', component: <Hair2 /> },
+    { id: 'hair-3', component: <Hair3 /> },
+  ];
+
+  const eyesOptions = [
+    { id: 'eyes-1', label: 'Eyes 1' },
+    // Add more eye options here
+  ];
+
+  const mouthOptions = [
+    { id: 'mouth-1', label: 'Mouth 1' },
+    // Add more mouth options here
+  ];
+
   return (
-    <div className="p-4 bg-gray-800 rounded-lg">
-      <h3 className="text-lg font-bold text-white mb-4">Customize Your Avatar</h3>
-      {/* Hair options */}
-      <div className="mb-4">
-        <label className="block text-white mb-2">Hair</label>
-        {/* Hair options will go here */}
+    <div className="p-6 bg-gray-900 rounded-2xl shadow-lg">
+      <h3 className="text-2xl font-bold text-white mb-6 font-medieval">Customize Your Hero</h3>
+
+      {/* Hair Section */}
+      <div className="mb-8">
+        <label className="block text-xl text-yellow-300 mb-4 font-medieval">Hair Style</label>
+        <div className="flex space-x-4">
+          {hairOptions.map((hair) => (
+            <button
+              key={hair.id}
+              onClick={() => onHairChange(hair.id)}
+              className="w-24 h-24 p-2 bg-gray-800 rounded-lg border-2 border-transparent hover:border-yellow-400 focus:border-yellow-500 focus:outline-none transition-all duration-200"
+            >
+              <div className="w-full h-full">
+                {hair.component}
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
-      {/* Eyes options */}
-      <div className="mb-4">
-        <label className="block text-white mb-2">Eyes</label>
-        {/* Eyes options will go here */}
+
+      {/* Eyes Section */}
+      <div className="mb-8">
+        <label className="block text-xl text-yellow-300 mb-4 font-medieval">Eyes</label>
+        <div className="flex space-x-4">
+          {/* Placeholder for eyes options */}
+          <div className="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center text-white">
+            Coming Soon
+          </div>
+        </div>
       </div>
-      {/* Mouth options */}
+
+      {/* Mouth Section */}
       <div>
-        <label className="block text-white mb-2">Mouth</label>
-        {/* Mouth options will go here */}
+        <label className="block text-xl text-yellow-300 mb-4 font-medieval">Mouth</label>
+        <div className="flex space-x-4">
+          {/* Placeholder for mouth options */}
+          <div className="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center text-white">
+            Coming Soon
+          </div>
+        </div>
       </div>
     </div>
   );
