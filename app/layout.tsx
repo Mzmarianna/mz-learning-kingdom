@@ -24,9 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${medievalSharp.variable} antialiased font-sans bg-kingdom-background-start text-kingdom-foreground`}
+        suppressHydrationWarning
       >
         {children}
       </body>

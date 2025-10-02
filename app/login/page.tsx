@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { KeyRound, LogIn } from 'lucide-react';
+import { LogIn } from 'lucide-react';
 
 export default function LoginPage() {
   return (
@@ -48,7 +48,7 @@ export default function LoginPage() {
         </form>
 
         <div className="relative z-10 text-center mt-6">
-          <p className="text-kingdom-muted">Don't have a key to the Kingdom? <Link href="/register" className="font-bold text-kingdom-accent-teal hover:underline">Register here</Link></p>
+          <p className="text-kingdom-muted">Don&apos;t have a key to the Kingdom? <Link href="/register" className="font-bold text-kingdom-accent-teal hover:underline">Register here</Link></p>
         </div>
       </div>
     </div>

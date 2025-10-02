@@ -18,14 +18,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: string };
 }>) {
   return (
-    <html lang={params.lang}>
-      <body className={`${inter.variable} ${medievalSharp.variable} font-sans`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${medievalSharp.variable} font-sans`} suppressHydrationWarning>
         <div className="bg-gradient-to-b from-background-start to-background-end text-foreground min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">{children}</main>

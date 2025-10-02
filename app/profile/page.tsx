@@ -1,8 +1,7 @@
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/ui/avatar";
+import { Button } from "@/app/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/card";
+import { Progress } from "@/app/components/ui/progress";
 import { BookOpen, MessageSquare, Compass, Award, Shield } from "lucide-react";
 
 export default function ProfilePage() {
@@ -77,7 +76,7 @@ export default function ProfilePage() {
                   <Compass />
                   Your Personalized Map
                 </CardTitle>
-                <CardDescription>Explore the realms you've unlocked and see your journey.</CardDescription>
+                <CardDescription>Explore the realms you&apos;ve unlocked and see your journey.</CardDescription>
               </CardHeader>
               <CardContent>
                  {/* Placeholder for the map component */}

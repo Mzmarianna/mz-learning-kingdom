@@ -1,7 +1,7 @@
 
 'use client';
 
-import { i18n } from '../../i18n-config';
+import { i18n } from '../../../i18n-config';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function LanguageSwitcher() {

@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { UserPlus, ShieldCheck } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 
 export default function RegisterPage() {
   return (
