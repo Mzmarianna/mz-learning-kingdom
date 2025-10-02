@@ -153,3 +153,63 @@ Before we get started, keep in mind:
 [error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
 [debug] [2025-10-02T19:59:03.658Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
 [debug] [2025-10-02T19:59:03.659Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T21:00:08.423Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.424Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.425Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T21:00:08.429Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T21:00:08.429Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.491Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.492Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.492Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T21:00:08.493Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T21:00:08.493Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T21:00:08.611Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.612Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.612Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T21:00:08.613Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T21:00:08.613Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.619Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.619Z] Checked if tokens are valid: false, expires at: 1759437884576
+[debug] [2025-10-02T21:00:08.619Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T21:00:08.620Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T21:00:08.620Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.671Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T21:00:08.671Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.694Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [none]
+[debug] [2025-10-02T21:00:08.694Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T21:00:08.706Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T21:00:08.706Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.726Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-02T21:00:08.727Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T21:00:08.755Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T21:00:08.755Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.775Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [none]
+[debug] [2025-10-02T21:00:08.776Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T21:00:08.783Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T21:00:08.786Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T21:00:08.807Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-02T21:00:08.808Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T21:00:09.119Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-02T21:00:09.119Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-02T21:00:09.153Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-02T21:00:09.154Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-02T21:00:09.286Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ 200
+[debug] [2025-10-02T21:00:09.287Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [omitted]
+[debug] [2025-10-02T21:00:09.308Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ 200
+[debug] [2025-10-02T21:00:09.313Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T21:00:09.324Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-02T21:00:09.324Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T21:00:09.366Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-02T21:00:09.368Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T21:00:09.378Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-02T21:00:09.379Z] > authorizing via signed-in user (mariannav920@gmail.com)
