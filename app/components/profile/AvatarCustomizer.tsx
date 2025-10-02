@@ -3,6 +3,10 @@ import React from 'react';
 import Hair1 from './avatar/hair/Hair1';
 import Hair2 from './avatar/hair/Hair2';
 import Hair3 from './avatar/hair/Hair3';
+import Eyes1 from './avatar/eyes/Eyes1';
+import Eyes2 from './avatar/eyes/Eyes2';
+import Mouth1 from './avatar/mouth/Mouth1';
+import Mouth2 from './avatar/mouth/Mouth2';
 
 interface AvatarCustomizerProps {
   onHairChange: (hair: string) => void;
@@ -23,13 +27,13 @@ const AvatarCustomizer: React.FC<AvatarCustomizerProps> = ({
   ];
 
   const eyesOptions = [
-    { id: 'eyes-1', label: 'Eyes 1' },
-    // Add more eye options here
+    { id: 'eyes-1', component: <Eyes1 /> },
+    { id: 'eyes-2', component: <Eyes2 /> },
   ];
 
   const mouthOptions = [
-    { id: 'mouth-1', label: 'Mouth 1' },
-    // Add more mouth options here
+    { id: 'mouth-1', component: <Mouth1 /> },
+    { id: 'mouth-2', component: <Mouth2 /> },
   ];
 
   return (
@@ -58,10 +62,17 @@ const AvatarCustomizer: React.FC<AvatarCustomizerProps> = ({
       <div className="mb-8">
         <label className="block text-xl text-yellow-300 mb-4 font-medieval">Eyes</label>
         <div className="flex space-x-4">
-          {/* Placeholder for eyes options */}
-          <div className="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center text-white">
-            Coming Soon
-          </div>
+          {eyesOptions.map((eyes) => (
+            <button
+              key={eyes.id}
+              onClick={() => onEyesChange(eyes.id)}
+              className="w-24 h-24 p-2 bg-gray-800 rounded-lg border-2 border-transparent hover:border-yellow-400 focus:border-yellow-500 focus:outline-none transition-all duration-200"
+            >
+              <div className="w-full h-full">
+                {eyes.component}
+              </div>
+            </button>
+          ))}
         </div>
       </div>
 
@@ -69,10 +80,17 @@ const AvatarCustomizer: React.FC<AvatarCustomizerProps> = ({
       <div>
         <label className="block text-xl text-yellow-300 mb-4 font-medieval">Mouth</label>
         <div className="flex space-x-4">
-          {/* Placeholder for mouth options */}
-          <div className="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center text-white">
-            Coming Soon
-          </div>
+          {mouthOptions.map((mouth) => (
+            <button
+              key={mouth.id}
+              onClick={() => onMouthChange(mouth.id)}
+              className="w-24 h-24 p-2 bg-gray-800 rounded-lg border-2 border-transparent hover:border-yellow-400 focus:border-yellow-500 focus:outline-none transition-all duration-200"
+            >
+              <div className="w-full h-full">
+                {mouth.component}
+              </div>
+            </button>
+          ))}
         </div>
       </div>
     </div>

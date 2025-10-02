@@ -3,17 +3,12 @@
 import React, { useState } from 'react';
 import Avatar from '../../components/profile/Avatar';
 import AvatarCustomizer from '../../components/profile/AvatarCustomizer';
-import { getDictionary } from '../../../lib/get-dictionary';
-import { Locale } from '../../../i18n-config';
 
-export default function ProfilePage({ params: { lang } }: { params: { lang: Locale } }) {
+export default function ProfilePage() {
   const [hair, setHair] = useState('hair-1');
   const [eyes, setEyes] = useState('eyes-1');
   const [mouth, setMouth] = useState('mouth-1');
-  const [skin, setSkin] = useState('#f2d5a6');
-
-  // Fetch dictionary in the future
-  // const dictionary = await getDictionary(lang);
+  const [skin] = useState('#f2d5a6');
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

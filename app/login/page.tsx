@@ -1,115 +1,56 @@
 
-'use client';
+import Link from 'next/link';
+import { KeyRound, LogIn } from 'lucide-react';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth, db } from '../../../firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
-
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.push('/');
-    } catch (error: any) {
-      setError(error.message);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-
-      // Check if user already exists in Firestore
-      const userDoc = await getDoc(doc(db, "users", user.uid));
-      if (!userDoc.exists()) {
-        // Create a new document for the user in Firestore
-        await setDoc(doc(db, "users", user.uid), {
-          email: user.email,
-          avatar: { // Default avatar
-            hair: 'hair1',
-            eyes: 'eyes1',
-            mouth: 'mouth1',
-            skin: 'skin1'
-          }
-        });
-      }
-      router.push('/');
-    } catch (error: any) {
-      setError(error.message);
-    }
-  };
-
+export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login to Your Kingdom</h2>
-        <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label className="block text-gray-400 mb-2" htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:outline-none focus:border-purple-500"
-              required
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-kingdom-background-start to-kingdom-background-end text-kingdom-foreground">
+      <div className="relative w-full max-w-md m-4 p-8 bg-kingdom-background-start/80 backdrop-blur-sm rounded-2xl border border-kingdom-muted/20 shadow-2xl shadow-kingdom-accent-purple/10">
+        
+        {/* Decorative Glow */}
+        <div className="absolute -top-1 -left-1 w-24 h-24 bg-kingdom-accent-purple/20 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-1 -right-1 w-24 h-24 bg-kingdom-accent-teal/20 rounded-full filter blur-3xl animate-pulse animation-delay-4000"></div>
+
+        <div className="relative z-10 text-center">
+          <h1 className="text-4xl font-bold font-serif text-kingdom-accent-gold mb-2 tracking-wider">
+            Welcome Back
+          </h1>
+          <p className="text-kingdom-muted mb-8">Your Kingdom awaits your return.</p>
+        </div>
+
+        <form className="relative z-10 space-y-6">
+          <div className="relative">
+            <input 
+              type="email" 
+              placeholder="Email Address"
+              className="w-full px-4 py-3 bg-kingdom-background-end border-2 border-kingdom-muted/30 rounded-lg focus:outline-none focus:border-kingdom-accent-teal transition-colors duration-300 peer"
             />
+            <label className="absolute left-4 -top-2.5 text-sm text-kingdom-muted bg-kingdom-background-end px-1 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm transition-all duration-300">Email Address</label>
           </div>
-          <div className="mb-6">
-            <label className="block text-gray-400 mb-2" htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:outline-none focus:border-purple-500"
-              required
+          
+          <div className="relative">
+            <input 
+              type="password" 
+              placeholder="Password"
+              className="w-full px-4 py-3 bg-kingdom-background-end border-2 border-kingdom-muted/30 rounded-lg focus:outline-none focus:border-kingdom-accent-purple transition-colors duration-300 peer"
             />
+            <label className="absolute left-4 -top-2.5 text-sm text-kingdom-muted bg-kingdom-background-end px-1 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm transition-all duration-300">Password</label>
           </div>
-          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-          <button
-            type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-300"
-          >
-            Enter the Kingdom
+
+          <div className="flex items-center justify-between">
+            <a href="#" className="text-sm text-kingdom-accent-teal hover:underline">Forgot Password?</a>
+          </div>
+
+          <button type="submit" className="w-full flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-full text-kingdom-background-start bg-kingdom-accent-gold hover:bg-yellow-300 transition-all duration-300 shadow-glow-gold transform hover:scale-105">
+            <LogIn size={20} />
+            <span>Login to the Kingdom</span>
           </button>
         </form>
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-600"></div>
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-gray-800 text-gray-400">Or continue with</span>
-          </div>
+
+        <div className="relative z-10 text-center mt-6">
+          <p className="text-kingdom-muted">Don't have a key to the Kingdom? <Link href="/register" className="font-bold text-kingdom-accent-teal hover:underline">Register here</Link></p>
         </div>
-        <div>
-          <button
-            onClick={handleGoogleSignIn}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition duration-300 flex items-center justify-center"
-          >
-            <svg className="w-6 h-6 mr-2" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.75 8.36,4.73 12.19,4.73C14.03,4.73 15.6,5.33 16.89,6.48L19.33,4.04C17.5,2.18 15,1 12.19,1C6.95,1 2.56,5.25 2.56,12C2.56,18.75 6.95,23 12.19,23C17.64,23 21.74,18.88 21.74,12.38C21.74,11.88 21.5,11.45 21.35,11.1Z" />
-            </svg>
-            Sign in with Google
-          </button>
-        </div>
-        <p className="text-center mt-6 text-gray-400">
-          Don't have an account?{' '}
-          <a href="/register" className="text-purple-400 hover:underline">Join the adventure!</a>
-        </p>
       </div>
     </div>
   );
-};
-
-export default LoginPage;
+}

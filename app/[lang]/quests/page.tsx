@@ -1,9 +1,5 @@
 
-import { getDictionary } from '../../../lib/get-dictionary';
-import { Locale } from '../../../i18n-config';
-
-export default async function QuestsPage({ params: { lang } }: { params: { lang: Locale } }) {
-  const dictionary = await getDictionary(lang);
+export default async function QuestsPage() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

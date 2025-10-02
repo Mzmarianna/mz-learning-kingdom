@@ -1,0 +1,111 @@
+[debug] [2025-10-01T13:17:21.447Z] ----------------------------------------------------------------------
+[debug] [2025-10-01T13:17:21.469Z] Command:       /nix/store/ixbb20farqh1f4fqbmsn6b1ixn8mc8ij-nodejs-20.18.1/bin/node /home/user/.global_modules/bin/firebase init hosting
+[debug] [2025-10-01T13:17:21.480Z] CLI Version:   14.17.0
+[debug] [2025-10-01T13:17:21.481Z] Platform:      linux
+[debug] [2025-10-01T13:17:21.481Z] Node Version:  v20.18.1
+[debug] [2025-10-01T13:17:21.482Z] Time:          Wed Oct 01 2025 13:17:21 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-10-01T13:17:21.489Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-01T13:17:22.071Z] Checked if tokens are valid: true, expires at: 1759328236918
+[debug] [2025-10-01T13:17:22.072Z] Checked if tokens are valid: true, expires at: 1759328236918
+[debug] [2025-10-01T13:17:22.078Z] >>> [apiv2][query] GET https://monospace-pa.googleapis.com/v1/workspaces/learning-kingdom-16745523 [none]
+[debug] [2025-10-01T13:17:23.064Z] <<< [apiv2][status] GET https://monospace-pa.googleapis.com/v1/workspaces/learning-kingdom-16745523 200
+[debug] [2025-10-01T13:17:23.065Z] <<< [apiv2][body] GET https://monospace-pa.googleapis.com/v1/workspaces/learning-kingdom-16745523 {"workspaceId":"learning-kingdom-16745523","name":"Learning Kingdom ","workspaceRedirectUrl":"firebase-learning-kingdom-1759263003952.cluster-lrhkgnsygfb7ovnbvdt2fflxme.cloudworkstations.dev","status":"WORKSPACE_STATUS_RUNNING","lastAccessDatetime":"2025-10-01T01:18:06.097039Z","workspaceTemplate":"WORKSPACE_TEMPLATE_BLANK_WEB","owner":"SELF","serviceAccountEmail":"msp-6176750928297128332@monospace-362420.iam.gserviceaccount.com","enableNix":true,"ownerEmail":"mariannav920@gmail.com","workspaceImageUrl":"https://www.gstatic.com/monospace/231115/logo_nextjs.svg","templateArgs":"{\"language\":\"ts\",\"srcDir\":true,\"eslint\":false,\"app\":true,\"tailwind\":true,\"__agentic_workspace\":true}","templateRepoUrl":"file:///usr/local/monospace/templates/public/nextjs","workstationAccessToken":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmdvb2dsZS5jb20vd29ya3N0YXRpb25zIiwiYXVkIjoiZmlyZWJhc2UtbGVhcm5pbmcta2luZ2RvbS0xNzU5MjYzMDAzOTUyLmNsdXN0ZXItbHJoa2duc3lnZmI3b3ZuYnZkdDJmZmx4bWUuY2xvdWR3b3Jrc3RhdGlvbnMuZGV2IiwiaWF0IjoxNzU5MzI0NjQyLCJleHAiOjE3NTk0MTEwNDJ9.tmTqq8CJApKkgBfi5vwotqjttTl4e_TLcG8pf7p2lad11T4BBRwdpiA5hqtTxzD0-hihMMzx0mzztQLwntsZVYhLjz35ZQLjicfZXMHbjQ82ZegSZK5pKPxb6DVBUQkd6TuJOu_q5X3_dDuuBCFE_soR7U-gelsipiLrgpRJk53NUgCQU7Ez7e7euxw6-Hn_DXAHqTl9CRo_MITT2gqip3XYBwbPa3NAYypVeWUifaEvbT5CYfDlIYqC0YS9YL6sRPb_J7Zsw2YE4rtr0VvpRwiPDt8MdyMizxDe-r1dBZQ9ZsTQBJsu8SES3IbKI_T9Ft8aMoS4eK42EFQ--_S1Aw","firebaseProjectId":"mz-marianna-kingdom-learning"}
+[debug] [2025-10-01T13:17:23.067Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-01T13:17:23.068Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/user/learning-kingdom
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-10-01T13:17:23.082Z] Using project from CLI flag: mz-marianna-kingdom-learning
+[debug] [2025-10-01T13:17:23.082Z] Checked if tokens are valid: true, expires at: 1759328236918
+[debug] [2025-10-01T13:17:23.082Z] Checked if tokens are valid: true, expires at: 1759328236918
+[debug] [2025-10-01T13:17:23.083Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mz-marianna-kingdom-learning [none]
+[debug] [2025-10-01T13:17:23.270Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mz-marianna-kingdom-learning 200
+[debug] [2025-10-01T13:17:23.271Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mz-marianna-kingdom-learning {"projectId":"mz-marianna-kingdom-learning","projectNumber":"102564887145","displayName":"mz-marianna-kingdom-learning","name":"projects/mz-marianna-kingdom-learning","resources":{"hostingSite":"mz-marianna-kingdom-learning","realtimeDatabaseInstance":"mz-marianna-kingdom-learning-default-rtdb"},"state":"ACTIVE","etag":"1_2ce4809c-d975-4696-b623-4a4983543543"}
+[info] i  Using project mz-marianna-kingdom-learning (mz-marianna-kingdom-learning) 
+[info] 
+=== Hosting Setup
+[debug] [2025-10-01T13:17:23.286Z] Checked if tokens are valid: true, expires at: 1759328236918
+[debug] [2025-10-01T13:17:23.287Z] Checked if tokens are valid: true, expires at: 1759328236918
+[debug] [2025-10-01T13:17:23.287Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mz-marianna-kingdom-learning [none]
+[debug] [2025-10-01T13:17:23.566Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mz-marianna-kingdom-learning 200
+[debug] [2025-10-01T13:17:23.567Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mz-marianna-kingdom-learning {"projectId":"mz-marianna-kingdom-learning","projectNumber":"102564887145","displayName":"mz-marianna-kingdom-learning","name":"projects/mz-marianna-kingdom-learning","resources":{"hostingSite":"mz-marianna-kingdom-learning","realtimeDatabaseInstance":"mz-marianna-kingdom-learning-default-rtdb"},"state":"ACTIVE","etag":"1_2ce4809c-d975-4696-b623-4a4983543543"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T19:44:44.848Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:44.849Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:44.849Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T19:44:44.855Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T19:44:44.856Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.033Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:45.034Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:45.034Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T19:44:45.037Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T19:44:45.038Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T19:44:45.247Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:45.255Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:45.255Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T19:44:45.263Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T19:44:45.263Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.282Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:45.284Z] Checked if tokens are valid: false, expires at: 1759328236918
+[debug] [2025-10-02T19:44:45.285Z] > refreshing access token with scopes: []
+[debug] [2025-10-02T19:44:45.285Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-02T19:44:45.285Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.377Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T19:44:45.379Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.424Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-02T19:44:45.424Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T19:44:45.431Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T19:44:45.431Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.449Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [none]
+[debug] [2025-10-02T19:44:45.449Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T19:44:45.473Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T19:44:45.475Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.498Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [none]
+[debug] [2025-10-02T19:44:45.500Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T19:44:45.567Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-02T19:44:45.573Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-02T19:44:45.609Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-02T19:44:45.609Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-02T19:44:45.858Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-02T19:44:45.858Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-02T19:44:45.933Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-02T19:44:45.944Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-02T19:44:46.079Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ 200
+[debug] [2025-10-02T19:44:46.079Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T19:44:46.099Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-02T19:44:46.100Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[debug] [2025-10-02T19:44:46.131Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ 200
+[debug] [2025-10-02T19:44:46.131Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T19:44:46.165Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-02T19:44:46.168Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-02T19:44:46.188Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-02T19:44:46.189Z] > authorizing via signed-in user (mariannav920@gmail.com)

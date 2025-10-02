@@ -1,86 +1,131 @@
 
-'use client';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { BookOpen, MessageSquare, Compass, Award, Shield } from "lucide-react";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, db } from '../../../firebase';
-import Avatar from '../components/Avatar';
-
-const ProfilePage = () => {
-  const [user, setUser] = useState<any>(null);
-  const [avatar, setAvatar] = useState<any>(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists()) {
-          setUser(user);
-          setAvatar(userDoc.data().avatar);
-        } else {
-          // Handle case where user is authenticated but no user document exists
-          router.push('/login');
-        }
-      } else {
-        router.push('/login');
-      }
-    });
-    return () => unsubscribe();
-  }, [router]);
-
-  const handleAvatarChange = (newAvatar: any) => {
-    setAvatar(newAvatar);
+export default function ProfilePage() {
+  // Mock data - this will be replaced with real data from Firebase
+  const student = {
+    name: "Alex Ryder",
+    level: "Explorer",
+    xp: 65,
+    avatarUrl: "/img/avatar-placeholder.png", // Placeholder avatar
+    quest: {
+      title: "The Quest for the Lost Glyphs",
+      challenges: 16,
+      completed: 10,
+    },
+    tutor: {
+      name: "Wowl the Owl",
+    },
   };
-
-  const handleSave = async () => {
-    if (user) {
-      await setDoc(doc(db, 'users', user.uid), { avatar }, { merge: true });
-      alert('Avatar saved!');
-    }
-  };
-
-  if (!user || !avatar) {
-    return <div>Loading...</div>;
-  }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Customize Your Avatar</h1>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-16">
-        <div className="w-64 h-64 bg-gray-800 rounded-full flex items-center justify-center">
-          <Avatar avatar={avatar} />
-        </div>
-        <div className="w-full max-w-md bg-gray-800 p-8 rounded-lg">
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            {Object.keys(avatar).map((part) => (
-              <div key={part}>
-                <label className="capitalize block text-gray-400 mb-2">{part}</label>
-                <select
-                  value={avatar[part]}
-                  onChange={(e) => handleAvatarChange({ ...avatar, [part]: e.target.value })}
-                  className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:outline-none focus:border-purple-500"
-                >
-                  {/* Add options for each avatar part here */}
-                  <option value={`${part}1`}>{part} 1</option>
-                  <option value={`${part}2`}>{part} 2</option>
-                  <option value={`${part}3`}>{part} 3</option>
-                </select>
+    <div className="min-h-screen bg-gradient-to-b from-kingdom-background-start to-kingdom-background-end text-kingdom-foreground p-4 sm:p-6 md:p-8">
+      <div className="container mx-auto">
+        
+        {/* Student Header */}
+        <header className="flex flex-col sm:flex-row items-center justify-between mb-8">
+          <div className="flex items-center gap-4">
+            <Avatar className="w-24 h-24 border-4 border-kingdom-accent-gold shadow-glow-gold">
+              <AvatarImage src={student.avatarUrl} alt={student.name} />
+              <AvatarFallback>{student.name.charAt(0)}</AvatarFallback>
+            </Avatar>
+            <div>
+              <h1 className="text-4xl font-bold font-serif text-white">{student.name}</h1>
+              <div className="flex items-center gap-2 text-xl text-kingdom-accent-teal">
+                <Shield size={24} />
+                <span>{student.level}</span>
               </div>
-            ))}
+            </div>
           </div>
-          <button
-            onClick={handleSave}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-300"
-          >
-            Save Avatar
-          </button>
-        </div>
+          <div className="text-right mt-4 sm:mt-0">
+            <p className="text-lg text-kingdom-muted">Level Progress</p>
+            <Progress value={student.xp} className="w-48 mt-1 bg-kingdom-background-start border-2 border-kingdom-accent-purple shadow-glow-purple" />
+            <p className="text-sm text-kingdom-accent-purple mt-1">{student.xp}% to next level</p>
+          </div>
+        </header>
+
+        {/* Main Dashboard Grid */}
+        <main className="grid md:grid-cols-3 gap-6">
+
+          {/* Left Column: Quest & Map */}
+          <div className="md:col-span-2 space-y-6">
+            <Card className="bg-kingdom-background-start/50 border-kingdom-muted/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl text-kingdom-accent-gold font-serif">
+                  <BookOpen />
+                  Current Quest
+                </CardTitle>
+                <CardDescription>From your mentor, {student.tutor.name}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <h3 className="text-xl font-bold text-white mb-2">{student.quest.title}</h3>
+                <p className="text-kingdom-muted mb-4">You have completed {student.quest.completed} of {student.quest.challenges} challenges.</p>
+                <Progress value={(student.quest.completed / student.quest.challenges) * 100} className="bg-kingdom-background-start border border-kingdom-accent-teal shadow-glow-teal" />
+                <Button className="mt-4 bg-kingdom-accent-teal text-kingdom-background-start font-bold shadow-glow-teal hover:bg-teal-300">
+                  Continue Quest
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-kingdom-background-start/50 border-kingdom-muted/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl text-kingdom-accent-purple font-serif">
+                  <Compass />
+                  Your Personalized Map
+                </CardTitle>
+                <CardDescription>Explore the realms you've unlocked and see your journey.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                 {/* Placeholder for the map component */}
+                 <div className="w-full h-64 bg-kingdom-background-end rounded-lg flex items-center justify-center border-2 border-dashed border-kingdom-muted/30">
+                   <p className="text-kingdom-muted">Map coming soon...</p>
+                 </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Column: Messaging & Badges */}
+          <div className="space-y-6">
+            <Card className="bg-kingdom-background-start/50 border-kingdom-muted/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl text-kingdom-accent-gold font-serif">
+                  <MessageSquare />
+                  Tutor Messages
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {/* Placeholder for messaging component */}
+                <div className="h-48 bg-kingdom-background-end rounded-lg flex items-center justify-center border-2 border-dashed border-kingdom-muted/30">
+                  <p className="text-kingdom-muted">Messaging coming soon...</p>
+                </div>
+                <Button className="w-full mt-4 bg-kingdom-accent-gold text-kingdom-background-start font-bold shadow-glow-gold hover:bg-yellow-300">
+                  New Message
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-kingdom-background-start/50 border-kingdom-muted/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl text-kingdom-accent-purple font-serif">
+                  <Award />
+                  My Badges
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {/* Placeholder for badges component */}
+                <div className="h-32 bg-kingdom-background-end rounded-lg flex items-center justify-center border-2 border-dashed border-kingdom-muted/30">
+                  <p className="text-kingdom-muted">Badge collection coming soon...</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+        </main>
       </div>
     </div>
   );
-};
-
-export default ProfilePage;
-
+}
