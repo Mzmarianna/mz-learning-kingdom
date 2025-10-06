@@ -27,6 +27,11 @@ The application's aesthetic is the cornerstone of the experience, guided by a vi
     - [x] Implemented basic email/password authentication and Google Sign-In.
     - [x] Implemented internationalization (i18n).
     - [x] Cleaned up the project structure.
+- **Phase 1: Building the Kingdom's Foundation**
+    - [x] **Enhanced "Current Quest" Card:**
+        - Added a "View Quest" button for interactivity.
+        - Incorporated a "glow" effect on the progress bar for a magical feel.
+        - Added a `BookOpen` icon for better visual communication.
 
 ---
 
@@ -41,7 +46,8 @@ The application's aesthetic is the cornerstone of the experience, guided by a vi
 - **The Student's Citadel (Dashboard)**
     - [ ] **Interactive Avatar Customization System**.
     - [ ] XP & Level Progress Bars with a magical feel.
-    - [ ] **Basic Quest Board:** Display available and completed quests.
+    - [x] **Basic Quest Display:** Enhanced the "Current Quest" card on the profile page.
+    - [ ] **Full Quest Board:** Design and build a full page to display all available, in-progress, and completed quests.
 - **Initial Realms**
     - [ ] **The Astral Arena:** A realm for math and logic challenges (re-imagining "Math Warriors").
     - [ ] **The Guild of Strategy:** A realm for critical thinking and problem-solving games (re-imagining "Praxis").
@@ -74,3 +80,4 @@ The application's aesthetic is the cornerstone of the experience, guided by a vi
     - [ ] **Unify the Theme:** Clean up `tailwind.config.ts` and `globals.css` to reflect the new "Kingdom of Learning" aesthetic.
     - [ ] **Build the Grand Entrance:** Create the new, immersive homepage.
     - [ ] **Clean Up Old Pages:** Delete the `/battle-arena`, `/praxis`, and `/nico` page directories.
+

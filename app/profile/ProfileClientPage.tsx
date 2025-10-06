@@ -71,7 +71,7 @@ export default function ProfileClientPage() {
                 <p className="text-kingdom-muted mb-4">You have completed {student.quest.completed} of {student.quest.challenges} challenges.</p>
                 <Progress value={(student.quest.completed / student.quest.challenges) * 100} className="bg-kingdom-background-start border border-kingdom-accent-teal shadow-glow-teal" />
                 <Button className="mt-4 bg-kingdom-accent-teal text-kingdom-background-start font-bold shadow-glow-teal hover:bg-teal-300">
-                  Continue Quest
+                  View Quest
                 </Button>
               </CardContent>
             </Card>
