@@ -1,5 +1,5 @@
 env:
-  - variable: API_URL
+  - variable: NEXT_PUBLIC_API_URL
     value: api.production.service.com
     availability:
       - BUILD
