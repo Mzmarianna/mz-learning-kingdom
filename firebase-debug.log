@@ -1,0 +1,40 @@
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T20:42:00.120Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.121Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.122Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.122Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.125Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [none]
+[debug] [2025-10-06T20:42:00.126Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-06T20:42:00.229Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-06T20:42:00.230Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T20:42:00.536Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.536Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.538Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.539Z] Checked if tokens are valid: true, expires at: 1759785322553
+[debug] [2025-10-06T20:42:00.540Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [none]
+[debug] [2025-10-06T20:42:00.540Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-06T20:42:00.545Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-06T20:42:00.545Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/mz-marianna-kingdom-learning
+[debug] [2025-10-06T20:42:00.752Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-06T20:42:00.759Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-06T20:42:00.909Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-06T20:42:00.915Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-06T20:42:01.050Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ 200
+[debug] [2025-10-06T20:42:01.050Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [omitted]
+[debug] [2025-10-06T20:42:01.078Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ 200
+[debug] [2025-10-06T20:42:01.079Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mz-marianna-kingdom-learning/services/ [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T20:42:01.093Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T20:42:01.094Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T20:42:01.131Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T20:42:01.131Z] > authorizing via signed-in user (mariannav920@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T20:42:01.143Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T20:42:01.145Z] > authorizing via signed-in user (mariannav920@gmail.com)
