@@ -1,58 +1,68 @@
 
-# 🏰 Mz. Marianna's Kingdom of Learning - Project Blueprint
+# 🚀 Mz. Marianna's Next-Gen Learning Platform - Project Blueprint
 
-## 📜 **Overview**
+## 📜 **Vision**
 
-This document outlines the vision, architecture, and development plan for "Mz. Marianna's Kingdom of Learning," a streamlined, modern, and highly engaging tutoring platform. The platform will leverage gamification and a visually rich user experience to make learning fun and effective.
-
----
-
-## ✨ **Core Features & Design Philosophy**
-
-*   **Aesthetics & Performance:** The platform will feature a modern and magical theme, with a focus on high performance. We will use lightweight, hardware-accelerated animations and 3D graphics to create an immersive experience without compromising speed.
-*   **Gamification:** Learning will be structured as a series of "quests." Students will earn experience points (XP), unlock achievements, and customize their own unique avatars.
-*   **User-Centric Portals:** Dedicated portals for students, parents, and tutors will provide tailored experiences and tools for each user group.
+To create a cutting-edge, "Universal Studios" quality web application that transforms Mz. Marianna's tutoring business into a next-generation educational experience. The platform will combine a high-converting marketing funnel with an immersive, personalized learning journey, leveraging advanced 3D graphics and animations to make learning tangible and engaging.
 
 ---
 
-## 🗺️ **Development Roadmap**
+## 🌟 **Core Features & Implementation Strategy**
 
-### **Phase 1: Performance & Visual Overhaul (Current Focus)**
+### **1. High-Converting Landing Page (`www.mzmarianna.com`)**
 
-1.  **Integrate High-Performance Graphics:**
-    *   [ ] Install `three.js`, `@react-three/fiber`, and `@react-three/drei`.
-    *   [ ] Implement a lightweight, animated particle system on the homepage using `BufferGeometry` for efficiency.
-    .
-2.  **UI/UX Modernization:**
-    *   [ ] Redesign the homepage (`app/page.tsx`) to be a modern, engaging landing page.
-    *   [ ] Create new reusable `Card` components with modern styling (shadows, hover effects) for quests and content.
-    *   [ ] Apply hardware acceleration CSS (`transform: translateZ(0)`) to key UI elements for smooth animations.
-3.  **Responsive & Adaptive Design:**
-    *   [ ] Ensure all new components are fully responsive across devices.
-    *   [ ] Implement adaptive Level-of-Detail (LoD) for 3D elements to optimize performance on mobile.
+*   **Objective:** Capture visitor interest and drive them to the interactive quiz.
+*   **Key Components:**
+    *   [ ] **Compelling Hero Section:** "Hormozi-style" copywriting with a clear value proposition and real-world results.
+    *   [ ] **Problem/Solution Messaging:** Resonate with parent pain points and present Mz. Marianna's programs as the ideal solution.
+    *   [ ] **Parent Testimonials:** Showcase specific, positive outcomes.
+    *   [ ] **ESA/Scholarship Highlight:** Clearly state the acceptance of ESA and other scholarships.
+    *   [ ] **Multiple, Clear Calls-to-Action (CTAs):** Buttons and links that prominently lead to the quiz.
 
-### **Phase 2: Expanding the World**
+### **2. Interactive 3-Minute Quiz (`/quiz`)**
 
-*   **Advanced Gamification**
-    *   [ ] Complex Quest System (daily, weekly, seasonal storylines).
-    *   [ ] Achievement badges and a "Hall of Heroes."
-    *   [ ] Leaderboards and Guilds.
-*   **Parent & Tutor Portals**
-    *   [ ] Parent Command Center with child progress overview.
-    *   [ ] Tutor Admin Panel for curriculum assignment.
+*   **Objective:** Gather essential information to create a personalized learning plan and capture lead data.
+*   **Structure:** 8 personalized, multi-step questions.
+    *   [ ] Child's Name & Grade
+    *   [ ] Subjects needing help
+    *   [ ] Learning Style (Visual, Auditory, Kinesthetic)
+    *   [ ] Motivation Preferences (Competition, Rewards, Praise, Progress)
+    *   [ ] Time Availability
+    *   [ ] Biggest Challenges
+    *   [ ] Parent Contact Information (Name, Email, Phone)
+*   **Features:**
+    *   [ ] **Real-time Progress Tracking:** A visual indicator of quiz completion.
+    *   [ ] **Smart Validation:** Instant feedback on errors.
+    *   [ ] **Engaging UI/UX:** Smooth animations (GSAP), 3D backgrounds, and particle effects.
+    *   [ ] **Full Responsiveness & Keyboard Navigation.**
+
+### **3. Personalized Results Page (`/results`)**
+
+*   **Objective:** Present a compelling, custom-tailored learning plan that converts the lead into a client.
+*   **Dynamic Content (based on quiz answers):**
+    *   [ ] **Custom Learning Plan:** Recommend specific programs (e.g., Reading, Math, Test Prep) based on grade, subjects, and goals.
+    *   [ ] **Expected Outcomes & Timeline:** Set clear expectations for progress.
+    *   [ ] **Clear Pricing Tiers:** Display options with ESA acceptance highlighted.
+    *   [ ] **Consultation & Next Steps:** A clear CTA to schedule a free consultation.
+
+### **4. Admin Dashboard**
+
+*   **Objective:** Provide Mz. Marianna with a centralized location to view quiz submissions.
+*   **Features:**
+    *   [ ] **Hidden Login:** A non-obvious route for admin access (e.g., `/admin/login`).
+    *   [ ] **Data Viewing:** A simple interface to display all collected quiz data.
 
 ---
 
-## 🏗️ **Technical Architecture & Deployment**
+## 🔧 **Technical Stack & Architecture**
 
-*   **Frontend:** Next.js / React (App Router)
-*   **3D Graphics:** Three.js / @react-three/fiber
-*   **Styling:** Tailwind CSS with a single, unified theme.
-*   **Backend & Database:** Firebase (Auth, Firestore, Functions, Storage)
-*   **Deployment:**
-    *   **Hosting:** Firebase App Hosting for scalable, serverless deployment.
-    *   **Environment Config:** `apphosting.yaml` for managing environment variables.
-    *   **CI/CD:** Automated builds and deployments using a GitHub Actions workflow.
-*   **Performance Monitoring:**
-    *   [ ] Integrated analytics to monitor Core Web Vitals and user engagement.
+*   **Core:** Next.js (App Router), TypeScript-ready structure.
+*   **3D Graphics:** `three.js`, `@react-three/fiber`, `@react-three/drei`.
+    *   [ ] **Scene Management:** A `Scene3DManager` for handling the 3D environment.
+    *   [ ] **Optimization:** WebGPU detection with WebGL fallback, `BufferGeometry` for efficient particle systems, and adaptive Level-of-Detail (LoD).
+*   **Animations:** `gsap` for professional, smooth animations and page transitions.
+*   **Styling:** Advanced CSS, Tailwind CSS.
+    *   [ ] **GPU Acceleration:** `transform: translateZ(0)` on key elements.
+    *   [ ] **Modern Effects:** Glassmorphism, holographic shine, neon glow text.
+*   **Deployment:** Firebase App Hosting with CI/CD via GitHub Actions.
 
