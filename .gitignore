@@ -1,1 +1,13 @@
-﻿
+# Dependencies
+/node_modules
+
+# Next.js build output
+/.next/
+/out/
+
+# Environment variables
+.env.local
+
+# Firebase
+hosting/
+i/
