@@ -11,19 +11,19 @@ This roadmap captures the actionable steps for preparing, launching, and maintai
 
 ### 2. Project Structure Organization
 - [x] Initialize the Vite + React project scaffold (`src`, `public`, `vite.config.js`).
-- [ ] Introduce `docs/` for operational runbooks (this document) and `infrastructure/` for IaC templates when available.
-- [ ] Track ADRs in `docs/decisions/` so architectural trade-offs are transparent.
+- [~] Introduce `docs/` for operational runbooks (this document) and `infrastructure/` for IaC templates when available. (`docs/` complete; `infrastructure/` pending)
+- [x] Track ADRs in `docs/decisions/` so architectural trade-offs are transparent.
 
 ## Phase 2 – Environment Configuration
 
 ### 3. Environment Variables Setup
-- [ ] Duplicate `.env.example` into environment-specific files (`.env.local`, `.env.production`).
+- [x] Duplicate `.env.example` into environment-specific files (`.env.local`, `.env.production`).
 - [ ] Populate Firebase config keys and backend URLs from the secure secret manager.
-- [ ] Commit non-sensitive defaults only; all secrets stay outside version control.
+- [x] Commit non-sensitive defaults only; all secrets stay outside version control. (env files ignored; templates hold placeholders)
 
 ### 4. Firebase Project Setup – `mz-marianna-kingdom-learning`
-- [ ] Create or verify the project at <https://console.firebase.google.com/project/mz-marianna-kingdom-learning> (region `us-central`).
-- [ ] Create the Firebase project in the `us-central` region if it does not already exist.
+- [~] Create or verify the project at <https://console.firebase.google.com/project/mz-marianna-kingdom-learning> (region `us-central`). (see `docs/firebase-setup.md`)
+- [~] Create the Firebase project in the `us-central` region if it does not already exist.
 - [ ] Enable Authentication providers (Email/Password, Google).
 - [ ] Create Firestore in production mode with composite indexes for `students`, `sessions`, and `questLogs` collections.
 - [ ] Configure Firebase Hosting (used as a fallback if Vercel is unavailable).
