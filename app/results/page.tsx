@@ -7,7 +7,7 @@ import type { QuizData } from '../quiz/page'; // Assuming you export this type
 import Link from 'next/link';
 
 const generateRecommendation = (data: QuizData) => {
-  let plan = {
+  const plan = {
     title: "Customized Learning Blueprint",
     program: "General Academic Excellence",
     description: "A balanced approach to improve overall grades and study habits.",

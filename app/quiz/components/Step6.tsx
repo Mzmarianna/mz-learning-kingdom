@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
+import type { StepProps } from "../types";
 
-export const Step6 = ({ data, setData }) => (
+export const Step6 = ({ data, setData }: StepProps) => (
   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
     <h2 className="text-2xl font-bold mb-4">Availability & Challenges</h2>
     <label className="block mb-4">

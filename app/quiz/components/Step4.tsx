@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
+import type { StepProps } from "../types";
 
-export const Step4 = ({ data, setData }) => (
+export const Step4 = ({ data, setData }: StepProps) => (
   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
     <h2 className="text-2xl font-bold mb-4">Learning Style</h2>
     <p className="text-gray-400 mb-4">How does your child learn best?</p>

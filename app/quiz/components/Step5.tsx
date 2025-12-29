@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
+import type { StepProps } from "../types";
 
-export const Step5 = ({ data, setData }) => (
+export const Step5 = ({ data, setData }: StepProps) => (
   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
     <h2 className="text-2xl font-bold mb-4">Motivation</h2>
     <p className="text-gray-400 mb-4">What motivates your child the most?</p>

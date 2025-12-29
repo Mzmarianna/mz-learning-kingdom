@@ -5,8 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 
 export function MagicParticles({ count = 5000 }) {
-  const { size, viewport } = useThree();
-  const aspect = size.width / viewport.width;
+  const { viewport } = useThree();
 
   const pointsRef = useRef<THREE.Points>(null!);
 

@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
+import type { StepProps } from "../types";
 
-export const Step3 = ({ data, setData }) => (
+export const Step3 = ({ data, setData }: StepProps) => (
   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
     <h2 className="text-2xl font-bold mb-4">Subjects of Focus</h2>
     <p className="text-gray-400 mb-4">Select all that apply.</p>
