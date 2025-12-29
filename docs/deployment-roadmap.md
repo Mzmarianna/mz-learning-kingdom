@@ -18,12 +18,12 @@ This roadmap captures the actionable steps for preparing, launching, and maintai
 
 ### 3. Environment Variables Setup
 - [x] Duplicate `.env.example` into environment-specific files (`.env.local`, `.env.production`).
-- [ ] Populate Firebase config keys and backend URLs from the secure secret manager.
+- [x] Populate Firebase config keys and backend URLs from the secure secret manager. (`.env.local` / `.env.production` updated; secrets remain untracked)
 - [x] Commit non-sensitive defaults only; all secrets stay outside version control. (env files ignored; templates hold placeholders)
 
 ### 4. Firebase Project Setup – `mz-marianna-kingdom-learning`
-- [~] Create or verify the project at <https://console.firebase.google.com/project/mz-marianna-kingdom-learning> (region `us-central`). (see `docs/firebase-setup.md`)
-- [~] Create the Firebase project in the `us-central` region if it does not already exist.
+- [x] Create or verify the project at <https://console.firebase.google.com/project/mz-marianna-kingdom-learning> (region `us-central`). (project number `102564887145`)
+- [x] Create the Firebase project in the `us-central` region if it does not already exist.
 - [ ] Enable Authentication providers (Email/Password, Google).
 - [ ] Create Firestore in production mode with composite indexes for `students`, `sessions`, and `questLogs` collections.
 - [ ] Configure Firebase Hosting (used as a fallback if Vercel is unavailable).

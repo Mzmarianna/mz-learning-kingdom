@@ -4,10 +4,15 @@ Follow these steps to bring the `mz-marianna-kingdom-learning` Firebase project 
 
 ## 1. Create or Verify the Firebase Project
 1. Visit <https://console.firebase.google.com/> and sign in with the project owner account.
-2. From the project picker, search for `mz-marianna-kingdom-learning`.
-   - If the project exists, open it and confirm the **Project ID** and **Default GCP region** are correct (`us-central`).
-   - If it does not exist, click **Add project**, enter the project name, accept the default analytics location, and ensure the region is set to `us-central`.
-3. Record the **Project ID** and **Web App ID** once created. You will need these values for environment variables and CI secrets.
+2. From the project picker, open `mz-marianna-kingdom-learning`.
+   - **Project ID:** `mz-marianna-kingdom-learning`
+   - **Project number:** `102564887145`
+   - **Default region:** `us-central`
+   - If these values ever drift, update this guide.
+3. Record the **Web App ID** once the web app is registered. You will need it for environment variables and CI secrets.
+4. Update local environment files:
+   - `.env.local` and `.env.production` now contain the Firebase config values for the project (kept out of git).
+   - `.env.example` remains a template with placeholders for onboarding new contributors.
 
 ## 2. Register the Web App and Retrieve Config
 1. In the project dashboard, click the web (`</>`) icon to register a new web app if one is not already present.
