@@ -1,17 +1,102 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+    function signedIn() {
+      return request.auth != null;
     }
-    match /students/{studentId} {
-      allow read, write: if request.auth != null;
+
+    function roleIs(role) {
+      return signedIn() && request.auth.token.role == role;
     }
-    match /progress/{studentId} {
-      allow read, write: if request.auth != null;
+
+    function isAdmin() { return roleIs('admin'); }
+    function isTutor() { return roleIs('tutor') || isAdmin(); }
+    function isParent() { return roleIs('parent') || isAdmin(); }
+    function isStudent() { return roleIs('student') || isAdmin(); }
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isTutor());
+      allow create: if signedIn() && request.auth.uid == uid;
+      allow update: if signedIn() && request.auth.uid == uid;
+      allow delete: if isAdmin();
     }
-    match /quests/{questId} {
-      allow read: if request.auth != null;
+
+    match /questTemplates/{id} {
+      allow read: if signedIn();
+      allow write: if isTutor();
+    }
+
+    match /challengeTemplates/{id} {
+      allow read: if signedIn();
+      allow write: if isTutor();
+    }
+
+    match /curriculumPrograms/{id} {
+      allow read: if signedIn();
+      allow write: if isTutor();
+    }
+
+    match /curriculumLevels/{id} {
+      allow read: if signedIn();
+      allow write: if isTutor();
+    }
+
+    match /badgeTemplates/{id} {
+      allow read: if signedIn();
+      allow write: if isTutor();
+    }
+
+    match /standards/{id} {
+      allow read: if signedIn();
+      allow write: if isTutor();
+    }
+
+    match /questInstances/{id} {
+      allow read: if signedIn();
+      allow create: if isTutor();
+      allow update: if signedIn() && (
+        isTutor() || (
+          isStudent()
+          && request.resource.data.studentUid == request.auth.uid
+          && resource.data.diff(request.resource.data).changedKeys().hasOnly(['progress', 'status'])
+          && request.resource.data.progress.tutorConfirmed == resource.data.progress.tutorConfirmed
+          && request.resource.data.progress.mastered == resource.data.progress.mastered
+        )
+      );
+      allow delete: if isTutor();
+    }
+
+    match /challengeInstances/{id} {
+      allow read: if signedIn();
+      allow create: if isTutor();
+      allow update: if signedIn() && (
+        isTutor() || (
+          isStudent()
+          && request.resource.data.studentUid == request.auth.uid
+          && resource.data.diff(request.resource.data).changedKeys().hasOnly(['status', 'completedAt', 'evidence'])
+        )
+      );
+      allow delete: if isTutor();
+    }
+
+    match /submissions/{id} {
+      allow read: if signedIn();
+      allow create: if isStudent();
+      allow update: if isTutor();
+      allow delete: if isTutor();
+    }
+
+    match /xpEvents/{id} {
+      allow read: if signedIn();
+      allow create: if isTutor();
+      allow update, delete: if false;
+    }
+
+    match /badgesEarned/{id} {
+      allow read: if signedIn();
+      allow create: if isTutor();
+      allow update, delete: if false;
     }
   }
 }
