@@ -5,6 +5,12 @@
 /.next/
 /out/
 
+# Vite build output
+/build
+
+# Firebase local artifacts
+/.firebase
+
 # Environment variables
 .env.local
 .env.production

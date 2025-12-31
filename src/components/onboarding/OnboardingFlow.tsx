@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, CheckCircle, Sparkles, Award, BookOpen, Code, Palette, Brain, Zap } from 'lucide-react';
-import AvatarCustomization from '../student/AvatarCustomization';
+import AvatarCustomizer from '../student/AvatarCustomizer';
 import wowlIntro from 'figma:asset/d793d71f8bba9c420a59bd904e5c55a30b6f73a3.png';
 
 interface OnboardingFlowProps {
@@ -239,7 +239,7 @@ export default function OnboardingFlow({ onComplete, onSkip }: OnboardingFlowPro
                   </div>
                 ) : (
                   <div className="border-2 border-purple-200 rounded-2xl p-4 bg-gradient-to-br from-cyan-50 to-purple-50">
-                    <AvatarCustomization
+                    <AvatarCustomizer
                       onSave={(data) => {
                         setAvatarData(data);
                         setShowAvatarCustomization(false);
