@@ -13,3 +13,6 @@
 # Firebase
 hosting/
 i/
+
+# Test coverage
+/coverage
