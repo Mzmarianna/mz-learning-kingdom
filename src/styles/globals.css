@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Calm Mastery Design System */
+  --font-size: 16px;
+  
+  /* Typography */
+  --font-primary: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-ui: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-xp: 'Orbitron', monospace, sans-serif;
+  
+  /* Calm Mastery Colors - Teal/Cyan for calm backgrounds */
+  --calm-bg: oklch(0.95 0.04 200); /* Light teal */
+  --calm-surface: oklch(0.98 0.02 200); /* Very light teal */
+  --calm-border: oklch(0.85 0.06 200); /* Teal border */
+  --calm-primary: oklch(0.55 0.12 200); /* Teal accent */
+  --calm-primary-dark: oklch(0.45 0.14 200); /* Dark teal */
+  
+  /* Reward Colors - Purple/Pink (only for positive reinforcement) */
+  --reward-purple: oklch(0.60 0.20 300); /* Purple */
+  --reward-purple-light: oklch(0.90 0.10 300); /* Light purple */
+  --reward-pink: oklch(0.65 0.20 350); /* Pink */
+  --reward-pink-light: oklch(0.92 0.08 350); /* Light pink */
+  --reward-gradient: linear-gradient(135deg, var(--reward-purple) 0%, var(--reward-pink) 100%);
+  
+  /* Neutral Colors */
+  --background: oklch(0.99 0.01 200);
+  --foreground: oklch(0.20 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0 0);
+  
+  /* Success (Green - gentle, not bright) */
+  --success: oklch(0.65 0.15 150); /* Gentle green */
+  --success-light: oklch(0.92 0.08 150); /* Light green bg */
+  
+  /* Warning (Amber - gentle, not red) */
+  --warning: oklch(0.75 0.15 80); /* Gentle amber */
+  --warning-light: oklch(0.95 0.08 80); /* Light amber bg */
+  
+  /* NO RED - Use calm amber for "needs attention" states */
+  --needs-attention: oklch(0.70 0.12 60); /* Soft amber */
+  --needs-attention-light: oklch(0.94 0.06 60);
+  
+  /* Standard tokens */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0 0);
+  --primary: var(--calm-primary);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.02 200);
+  --secondary-foreground: oklch(0.20 0 0);
+  --muted: oklch(0.96 0.01 200);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.94 0.04 200);
+  --accent-foreground: oklch(0.20 0 0);
+  --destructive: var(--needs-attention); /* Never red */
+  --destructive-foreground: oklch(0.20 0 0);
+  --border: var(--calm-border);
+  --input: transparent;
+  --input-background: oklch(0.97 0.02 200);
+  --switch-background: oklch(0.85 0.04 200);
+  --ring: var(--calm-primary);
+  
+  /* Font weights */
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  
+  /* Border radius */
+  --radius: 0.75rem;
+  
+  /* Sidebar */
+  --sidebar: oklch(0.98 0.02 200);
+  --sidebar-foreground: oklch(0.20 0 0);
+  --sidebar-primary: var(--calm-primary);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.04 200);
+  --sidebar-accent-foreground: oklch(0.20 0 0);
+  --sidebar-border: var(--calm-border);
+  --sidebar-ring: var(--calm-primary);
+}
+
+.dark {
+  --calm-bg: oklch(0.20 0.04 200);
+  --calm-surface: oklch(0.24 0.04 200);
+  --calm-border: oklch(0.30 0.06 200);
+  --calm-primary: oklch(0.60 0.15 200);
+  --calm-primary-dark: oklch(0.50 0.18 200);
+  
+  --background: oklch(0.18 0.02 200);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.22 0.02 200);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.22 0.02 200);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: var(--calm-primary);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.28 0.04 200);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.28 0.04 200);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.30 0.06 200);
+  --accent-foreground: oklch(0.95 0 0);
+  --border: var(--calm-border);
+  --input: oklch(0.28 0.04 200);
+  --ring: var(--calm-primary);
+  
+  --sidebar: oklch(0.22 0.02 200);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: var(--calm-primary);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.28 0.04 200);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: var(--calm-border);
+  --sidebar-ring: var(--calm-primary);
+}
+
+@theme inline {
+  --color-calm-bg: var(--calm-bg);
+  --color-calm-surface: var(--calm-surface);
+  --color-calm-border: var(--calm-border);
+  --color-calm-primary: var(--calm-primary);
+  --color-calm-primary-dark: var(--calm-primary-dark);
+  
+  --color-reward-purple: var(--reward-purple);
+  --color-reward-purple-light: var(--reward-purple-light);
+  --color-reward-pink: var(--reward-pink);
+  --color-reward-pink-light: var(--reward-pink-light);
+  
+  --color-success: var(--success);
+  --color-success-light: var(--success-light);
+  --color-warning: var(--warning);
+  --color-warning-light: var(--warning-light);
+  --color-needs-attention: var(--needs-attention);
+  --color-needs-attention-light: var(--needs-attention-light);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-calm-bg text-foreground;
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Dyslexia-friendly spacing */
+    letter-spacing: 0.02em;
+    word-spacing: 0.08em;
+    line-height: 1.6;
+  }
+}
+
+/**
+ * Base typography - Neurodivergent-friendly
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-3xl);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    label {
+      font-family: var(--font-ui);
+      font-size: var(--text-base);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    button {
+      font-family: var(--font-ui);
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    input, textarea {
+      font-family: var(--font-ui);
+      font-size: var(--text-base);
+      font-weight: 400;
+      line-height: 1.6;
+      /* Higher contrast for readability */
+      color: oklch(0.15 0 0);
+    }
+  }
+}
+
+/* XP Display - Uses Orbitron font */
+.xp-display {
+  font-family: var(--font-xp);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Reward gradient backgrounds */
+.reward-bg {
+  background: var(--reward-gradient);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 3px solid var(--calm-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --calm-primary: oklch(0.45 0.18 200);
+    --border: oklch(0.30 0 0);
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+/* Dyslexia-friendly text selection */
+::selection {
+  background-color: var(--reward-purple-light);
+  color: var(--foreground);
+}
+
+/* ADHD-friendly: Clear visual hierarchy */
+.focus-mode {
+  /* Dims everything except the focused element */
+  filter: brightness(0.4);
+}
+
+.focus-mode-active {
+  filter: brightness(1);
+  position: relative;
+  z-index: 100;
+}
+
+/* Badge animations */
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes badgeUnlock {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Badge hover effects */
+.badge-hover {
+  transition: all 0.3s ease;
+}
+
+.badge-hover:hover {
+  transform: translateY(-4px) scale(1.05);
+  filter: drop-shadow(0 10px 25px rgba(59, 130, 246, 0.4));
+}
