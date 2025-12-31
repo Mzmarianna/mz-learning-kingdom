@@ -19,8 +19,14 @@ const firebaseConfig = {
 // Check if Firebase config is complete
 const isConfigured = firebaseConfig.apiKey && firebaseConfig.projectId;
 
-// Only initialize if config is available
-const app = isConfigured && getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+// Only initialize if config is available and not already initialized
+let app = null;
+if (isConfigured) {
+  app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
+} else if (getApps().length > 0) {
+  app = getApps()[0];
+}
+
 const auth = app ? getAuth(app) : null;
 const db = app ? getFirestore(app) : null;
 const storage = app ? getStorage(app) : null;
