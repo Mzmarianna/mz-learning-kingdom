@@ -1,8 +1,0 @@
-env:
-  - variable: NEXT_PUBLIC_API_URL
-    value: api.production.service.com
-    availability:
-      - BUILD
-      - RUNTIME
-  - variable: DATABASE_URL
-    secret: secretProductionDatabaseURL

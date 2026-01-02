@@ -1,4 +1,7 @@
 import { getApp, getApps, initializeApp } from 'firebase/app';
+import { AppCheck, initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { getAnalytics } from 'firebase/analytics';
+import type { Analytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';

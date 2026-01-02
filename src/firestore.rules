@@ -1,0 +1,255 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // =========================================================================
+    // HELPER FUNCTIONS
+    // =========================================================================
+    
+    // Check if user is authenticated
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    // Check if user has a specific role
+    function hasRole(role) {
+      return isSignedIn() && request.auth.token.role == role;
+    }
+    
+    // Check if user is student, tutor, or admin
+    function isStudent() {
+      return hasRole('student');
+    }
+    
+    function isTutor() {
+      return hasRole('tutor');
+    }
+    
+    function isAdmin() {
+      return hasRole('admin');
+    }
+    
+    function isParent() {
+      return hasRole('parent');
+    }
+    
+    // Check if user can modify (tutor or admin)
+    function canModify() {
+      return isTutor() || isAdmin();
+    }
+    
+    // Check if the resource belongs to the current user
+    function isOwner(studentUid) {
+      return isSignedIn() && request.auth.uid == studentUid;
+    }
+    
+    // Check if parent has access to student's data
+    function isParentOf(studentUid) {
+      return isParent() && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.studentUids.hasAny([studentUid]);
+    }
+    
+    // Check if tutor is assigned to student
+    function isTutorOf(studentUid) {
+      return isTutor() && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.assignedStudentIds.hasAny([studentUid]);
+    }
+    
+    // =========================================================================
+    // CURRICULUM COLLECTIONS (Read-Only for Students/Parents)
+    // =========================================================================
+    
+    match /curriculumPrograms/{programId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /curriculumLevels/{levelCode} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /questTemplates/{questId} {
+      allow read: if isSignedIn();
+      allow write: if canModify();
+    }
+    
+    match /challengeTemplates/{challengeId} {
+      allow read: if isSignedIn();
+      allow write: if canModify();
+    }
+    
+    match /standards/{standardId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /badgeTemplates/{badgeId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    // =========================================================================
+    // USER DATA
+    // =========================================================================
+    
+    match /users/{uid} {
+      // Users can read their own data
+      // Parents can read their children's data
+      // Tutors can read their assigned students' data
+      // Admins can read all
+      allow read: if isOwner(uid) || 
+                     isParentOf(uid) || 
+                     isTutorOf(uid) || 
+                     isAdmin();
+      
+      // Users can update their own profile (limited fields)
+      // Admins can update any user
+      allow update: if (isOwner(uid) && onlyUpdating(['displayName', 'avatarUrl', 'preferences'])) ||
+                       isAdmin();
+      
+      // Only admins can create or delete users
+      allow create, delete: if isAdmin();
+    }
+    
+    // Helper function to check if only specific fields are being updated
+    function onlyUpdating(fields) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(fields);
+    }
+    
+    // =========================================================================
+    // ORGANIZATIONS & COHORTS
+    // =========================================================================
+    
+    match /orgs/{orgId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /cohorts/{cohortId} {
+      allow read: if isSignedIn();
+      allow write: if canModify();
+    }
+    
+    // =========================================================================
+    // QUEST & CHALLENGE INSTANCES (Student Progress)
+    // =========================================================================
+    
+    match /questInstances/{questInstanceId} {
+      // Students can read their own quests
+      // Parents can read their children's quests
+      // Tutors can read their assigned students' quests
+      // Admins can read all
+      allow read: if isOwner(resource.data.studentUid) || 
+                     isParentOf(resource.data.studentUid) || 
+                     isTutorOf(resource.data.studentUid) || 
+                     isAdmin();
+      
+      // Tutors and admins can create quest assignments
+      allow create: if canModify();
+      
+      // Tutors and admins can update quest progress
+      // Students can update limited fields (startedAt)
+      allow update: if canModify() ||
+                       (isOwner(resource.data.studentUid) && 
+                        onlyUpdating(['startedAt', 'progress']));
+      
+      // Only admins can delete
+      allow delete: if isAdmin();
+    }
+    
+    match /challengeInstances/{challengeInstanceId} {
+      // Same read permissions as quest instances
+      allow read: if isOwner(resource.data.studentUid) || 
+                     isParentOf(resource.data.studentUid) || 
+                     isTutorOf(resource.data.studentUid) || 
+                     isAdmin();
+      
+      // Tutors and admins can create challenges
+      allow create: if canModify();
+      
+      // Students can update their own challenges (submit work)
+      // Tutors can update status, feedback, and completion
+      allow update: if (isOwner(resource.data.studentUid) && 
+                        onlyUpdating(['status', 'startedAt', 'evidence', 'completedAt'])) ||
+                       canModify();
+      
+      // Only admins can delete
+      allow delete: if isAdmin();
+    }
+    
+    // =========================================================================
+    // SUBMISSIONS
+    // =========================================================================
+    
+    match /submissions/{submissionId} {
+      // Same read permissions as challenges
+      allow read: if isOwner(resource.data.studentUid) || 
+                     isParentOf(resource.data.studentUid) || 
+                     isTutorOf(resource.data.studentUid) || 
+                     isAdmin();
+      
+      // Students can create submissions for their own work
+      allow create: if isOwner(request.resource.data.studentUid);
+      
+      // Tutors can update review status and feedback
+      // Students cannot modify after submission
+      allow update: if canModify();
+      
+      // Only admins can delete
+      allow delete: if isAdmin();
+    }
+    
+    // =========================================================================
+    // XP EVENTS (Append-Only Ledger)
+    // =========================================================================
+    
+    match /xpEvents/{xpEventId} {
+      // Students can read their own XP events
+      // Parents can read their children's XP events
+      // Tutors can read their assigned students' XP events
+      allow read: if isOwner(resource.data.studentUid) || 
+                     isParentOf(resource.data.studentUid) || 
+                     isTutorOf(resource.data.studentUid) || 
+                     isAdmin();
+      
+      // Only tutors and admins can create XP events
+      // XP events are append-only (no updates or deletes)
+      allow create: if canModify() && 
+                       request.resource.data.xp > 0; // XP must be positive
+      
+      // No updates or deletes allowed (ledger integrity)
+      allow update, delete: if false;
+    }
+    
+    // =========================================================================
+    // BADGES EARNED
+    // =========================================================================
+    
+    match /badgesEarned/{badgeEarnedId} {
+      // Same read permissions as XP events
+      allow read: if isOwner(resource.data.studentUid) || 
+                     isParentOf(resource.data.studentUid) || 
+                     isTutorOf(resource.data.studentUid) || 
+                     isAdmin();
+      
+      // Only tutors and admins can award badges
+      allow create: if canModify();
+      
+      // No updates or deletes allowed
+      allow update, delete: if false;
+    }
+    
+    // =========================================================================
+    // CATCH-ALL DENY
+    // =========================================================================
+    
+    // Deny access to any other collections not explicitly defined
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

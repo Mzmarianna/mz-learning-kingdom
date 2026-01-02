@@ -1,0 +1,84 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  REGION: ${{ vars.GCP_REGION }}
+  SERVICE_NAME: ${{ vars.CLOUD_RUN_SERVICE }}
+  GAR_LOCATION: ${{ vars.GAR_LOCATION }}
+  GAR_REPOSITORY: ${{ vars.GAR_REPOSITORY }}
+  IMAGE_NAME: ${{ vars.GAR_IMAGE_NAME }}
+  DOCKERFILE: ${{ vars.DOCKERFILE_PATH }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Configure Artifact Registry authentication
+        id: configure-gar
+        run: |
+          GAR_LOCATION="${{ env.GAR_LOCATION }}"
+          if [ -z "$GAR_LOCATION" ]; then
+            GAR_LOCATION="${{ env.REGION }}"
+          fi
+          if [ -z "$GAR_LOCATION" ]; then
+            echo "GAR_LOCATION or REGION must be provided." >&2
+            exit 1
+          fi
+          GAR_HOST="${GAR_LOCATION}-docker.pkg.dev"
+          echo "gar-host=$GAR_HOST" >> "$GITHUB_OUTPUT"
+          gcloud auth configure-docker "$GAR_HOST" --quiet
+        shell: bash
+
+      - name: Build container image
+        id: build-image
+        run: |
+          GAR_REPOSITORY="${{ env.GAR_REPOSITORY }}"
+          if [ -z "$GAR_REPOSITORY" ]; then
+            echo "GAR_REPOSITORY is required." >&2
+            exit 1
+          fi
+          IMAGE_NAME="${{ env.IMAGE_NAME }}"
+          if [ -z "$IMAGE_NAME" ]; then
+            IMAGE_NAME="web"
+          fi
+          DOCKERFILE_PATH="${{ env.DOCKERFILE }}"
+          if [ -z "$DOCKERFILE_PATH" ]; then
+            DOCKERFILE_PATH="Dockerfile"
+          fi
+          IMAGE_PATH="${{ steps.configure-gar.outputs.gar-host }}/${{ env.PROJECT_ID }}/$GAR_REPOSITORY/$IMAGE_NAME"
+          docker build --file "$DOCKERFILE_PATH" --tag "$IMAGE_PATH:${{ github.sha }}" .
+          echo "image-path=$IMAGE_PATH" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Push container image
+        run: docker push "${{ steps.build-image.outputs.image-path }}:${{ github.sha }}"
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE_NAME }}
+          region: ${{ env.REGION }}
+          image: "${{ steps.build-image.outputs.image-path }}:${{ github.sha }}"
+          project_id: ${{ env.PROJECT_ID }}
