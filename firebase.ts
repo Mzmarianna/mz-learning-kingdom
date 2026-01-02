@@ -1,38 +1,35 @@
 import { getApp, getApps, initializeApp } from 'firebase/app';
-import { AppCheck, initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
-import { getAnalytics } from 'firebase/analytics';
-import type { Analytics } from 'firebase/analytics';
+import { getAnalytics, type Analytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getDatabase } from 'firebase/database';
 
-// Firebase configuration can be provided via environment variables
-// If not available during build, it will be initialized at runtime
+// Firebase configuration with production credentials
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '',
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '',
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || '',
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || '',
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL || '',
+  apiKey: "AIzaSyD3y0PAKH97pYnh5RqCxFzTPzYWuHn8YHo",
+  authDomain: "mz-marianna-kingdom-learning.firebaseapp.com",
+  databaseURL: "https://mz-marianna-kingdom-learning-default-rtdb.firebaseio.com",
+  projectId: "mz-marianna-kingdom-learning",
+  storageBucket: "mz-marianna-kingdom-learning.firebasestorage.app",
+  messagingSenderId: "102564887145",
+  appId: "1:102564887145:web:19c7a5262abaeb1e0140f8",
+  measurementId: "G-14DW5GV1CH"
 };
 
-// Check if Firebase config is complete
-const isConfigured = firebaseConfig.apiKey && firebaseConfig.projectId;
+// Initialize Firebase
+const app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
 
-// Only initialize if config is available and not already initialized
-let app = null;
-if (isConfigured) {
-  app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
-} else if (getApps().length > 0) {
-  app = getApps()[0];
+// Initialize Analytics (only in browser)
+let analytics: Analytics | null = null;
+if (typeof window !== 'undefined') {
+  analytics = getAnalytics(app);
 }
 
-const auth = app ? getAuth(app) : null;
-const db = app ? getFirestore(app) : null;
-const storage = app ? getStorage(app) : null;
-const database = app ? getDatabase(app) : null;
+// Initialize Firebase services
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+const database = getDatabase(app);
 
-export { app, auth, db, storage, database, isConfigured };
+export { app, auth, db, storage, database, analytics };
