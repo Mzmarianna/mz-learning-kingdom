@@ -1,0 +1,1 @@
+[Fetching the file content as the first step for content evaluation]

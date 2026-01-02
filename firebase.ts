@@ -1,61 +1,35 @@
 import { getApp, getApps, initializeApp } from 'firebase/app';
-import { AppCheck, initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
-import { getAnalytics } from 'firebase/analytics';
-import type { Analytics } from 'firebase/analytics';
+import { getAnalytics, type Analytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getDatabase } from 'firebase/database';
 
-function requireEnv(name: string): string {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`Missing Firebase environment variable: ${name}`);
-  }
-  return value;
-}
-
+// Firebase configuration with production credentials
 const firebaseConfig = {
-  apiKey: requireEnv('NEXT_PUBLIC_FIREBASE_API_KEY'),
-  authDomain: requireEnv('NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN'),
-  projectId: requireEnv('NEXT_PUBLIC_FIREBASE_PROJECT_ID'),
-  storageBucket: requireEnv('NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET'),
-  messagingSenderId: requireEnv('NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID'),
-  appId: requireEnv('NEXT_PUBLIC_FIREBASE_APP_ID'),
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-  ...(process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-    ? { measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }
-    : {}),
+  apiKey: "AIzaSyD3y0PAKH97pYnh5RqCxFzTPzYWuHn8YHo",
+  authDomain: "mz-marianna-kingdom-learning.firebaseapp.com",
+  databaseURL: "https://mz-marianna-kingdom-learning-default-rtdb.firebaseio.com",
+  projectId: "mz-marianna-kingdom-learning",
+  storageBucket: "mz-marianna-kingdom-learning.firebasestorage.app",
+  messagingSenderId: "102564887145",
+  appId: "1:102564887145:web:19c7a5262abaeb1e0140f8",
+  measurementId: "G-14DW5GV1CH"
 };
 
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
+
+// Initialize Analytics (only in browser)
+let analytics: Analytics | null = null;
+if (typeof window !== 'undefined') {
+  analytics = getAnalytics(app);
+}
+
+// Initialize Firebase services
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 const database = getDatabase(app);
-let appCheck: AppCheck | undefined;
-let analytics: Analytics | undefined;
 
-if (typeof window !== 'undefined') {
-  const debugToken = process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_DEBUG_TOKEN;
-  if (debugToken) {
-    // Enables debug mode when App Check is required in development.
-    (window as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string }).FIREBASE_APPCHECK_DEBUG_TOKEN = debugToken;
-  }
-
-  const siteKey = process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY;
-  if (!siteKey) {
-    console.warn('Missing App Check site key; App Check was not initialized.');
-  } else {
-    appCheck = initializeAppCheck(app, {
-      provider: new ReCaptchaV3Provider(siteKey),
-      isTokenAutoRefreshEnabled: true,
-    });
-  }
-
-  if (process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID) {
-    analytics = getAnalytics(app);
-  }
-}
-
-export { analytics, app, appCheck, auth, db, storage, database };
+export { app, auth, db, storage, database, analytics };
